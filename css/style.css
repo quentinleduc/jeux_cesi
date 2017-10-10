@@ -9,3 +9,14 @@ footer {
   background-color: #f2f2f2;
   padding: 25px;
 }
+
+#Formulaire_login
+{
+	border: 50px;
+	text-align: center;
+}
+#erreurmsg
+{
+	text-align: center;
+	color : red;
+}

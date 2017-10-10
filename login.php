@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
   
 </head>
 <body>
@@ -34,12 +34,35 @@
 	</div>
 </nav>
 
-<dic>
-	
+<dic id="Formulaire_login">
+	<form action="login1.php" method="post">
+	  <br>
+	  <p> Login </p>
+	  <input type="text" placeholder="login" name="login"> <br>
+	  <br>
+	  <p> Mot de passe </p>
+	  <input type="text" placeholder="mdp" name="mdp"> <br>
+	  <br>
+	  <input type="submit" value="OK">
+	  <a href="mdp_oublier.php">Mot de passe oublier</a>
+	</form>
 </dic>
+<div id = "erreurmsg">
+	<?php
+		session_start();
+		error_reporting(E_ALL & ~E_NOTICE);
 
+		if ($_GET["error"] == "error"){
+		  echo "Votre login et/ou votre mdp sont incorrects";
+		}
+
+		if ($_GET["log"] == "log"){
+		  echo "Merci de vous identifier";
+		}
+
+		  ?>
+</div>
 <footer class="container-fluid text-center">
-	<p>Footer Text</p>
 </footer>
 
 </body>
