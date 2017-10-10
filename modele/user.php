@@ -69,6 +69,9 @@ class User {
 		$this->grade = $n;
 	}
 
+	public function get_mdp(){
+		return $this->mdp;
+	}
 }
 
 

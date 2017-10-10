@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__."/user.php";
-require_once __DIR__."/Exceptions/TableAccessException.php";
-require_once __DIR__."/Exceptions/ConnexionException.php";
+require_once __DIR__."/../include/Exceptions/TableAccessException.php";
+require_once __DIR__."/../include/Exceptions/ConnexionException.php";
 
 class DAO{
   private $connexion;
@@ -11,7 +11,7 @@ class DAO{
 public function __construct(){
   try{
       //$chaine="mysql:host=localhost;dbname=E134935T";
-      $this->connexion = new PDO('mysql:host=localhost;dbname=Jeux_video_cesi;charset=utf8',"quentinleduc","");
+      $this->connexion = new PDO('mysql:host=localhost;dbname=projet_web_jv;charset=utf8',"root","");
       // pour la prise en charge des exceptions par PHP
       $this->connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
      }
@@ -21,11 +21,12 @@ public function __construct(){
     }
 }
 
-// méthode qui permet de se deconnecter de la base
+// fonction qui permet de se deconnecter de la base
 public function deconnexion(){
    $this->connexion = null;
 }
 
+// fonction qui retourne un utilisateur
 public function get_user($id){
   $result = array();
   $result_user = array();
@@ -44,7 +45,7 @@ public function get_user($id){
     return $result_user;
 }
 
-
+//fonction qui retourne tous les utilisateurs
 public function get_all_users(){
   $result = array();
   $result_user = array();
@@ -79,13 +80,15 @@ public function get_N_premiers_users($n){
  catch (TableAccesException $e) {
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
   }
+
+  // si le chiffre rentré est inférieur au nombre de résultats
   if($n < count($result)){
-    for($i=0; $i<$n; $i++){
+    for($i=0; $i<$n; $i++){//alors on récuppere le nombre de résultat demandé
       array_push($result_user, new User($result["UTI_id"],$result["UTI_Nom"],$result["UTI_Prenom"],$result["UTI_Login"],
   		$result["UTI_Password"],$result["UTI_Email"],$result["UTI_Grade"]));
     }
   }
-  else{
+  else{// sinon on charge les données présentes 
     for($i=0; $i<count($result); $i++){
       array_push($result_user, new User($result["UTI_id"],$result["UTI_Nom"],$result["UTI_Prenom"],$result["UTI_Login"],
   		$result["UTI_Password"],$result["UTI_Email"],$result["UTI_Grade"]));
@@ -96,7 +99,7 @@ public function get_N_premiers_users($n){
     return $result_user;
 }
 
-
+// fonction qui crée un utilisateur
 public function create_user($nom, $prenom, $login, $mdp , $email, $grade){
   try{
     $sth = $this->connexion->prepare("INSERT INTO `Utilisateur`(`UTI_nom`, `UTI_Prenom`, `UTI_Login`, `UTI_Password`, `UTI_Email`, `UTI_Grade`) VALUES (\"".$nom."\",\"".$prenom."\",\"".$login."\",\"".$mdp."\",\"".$email."\",
@@ -108,6 +111,7 @@ public function create_user($nom, $prenom, $login, $mdp , $email, $grade){
   }
 }
 
+//fonction qui supprime un utilisateur
 public function delete_user($id)
 {
   try{
