@@ -41,7 +41,7 @@
 	  <input type="text" placeholder="login" name="login"> <br>
 	  <br>
 	  <p> Mot de passe </p>
-	  <input type="text" placeholder="mdp" name="mdp"> <br>
+	  <input type="password" placeholder="mdp" name="mdp"> <br>
 	  <br>
 	  <input type="submit" value="OK">
 	  <a href="mdp_oublier.php">Mot de passe oublier</a>
