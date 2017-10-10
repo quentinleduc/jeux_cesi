@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 10 Octobre 2017 à 14:01
+-- Généré le :  Mar 10 Octobre 2017 à 15:02
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -86,18 +86,18 @@ CREATE TABLE `typejeux` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisaeur`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `utilisaeur` (
-  `UTI_id` int(11) NOT NULL DEFAULT '0',
-  `UTI_Nom` varchar(70) NOT NULL,
-  `UTI_Prenom` varchar(70) NOT NULL,
-  `UTI_Login` varchar(30) NOT NULL,
-  `UTI_Password` varchar(30) NOT NULL,
-  `UTI_Email` varchar(50) NOT NULL,
-  `UTI_Grade` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `utilisateur` (
+  `UTI_id` int(11) NOT NULL,
+  `UTI_Nom` varchar(50) COLLATE utf8_bin NOT NULL,
+  `UTI_Prenom` varchar(50) COLLATE utf8_bin NOT NULL,
+  `UTI_Login` int(15) NOT NULL,
+  `UTI_Password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `UTI_Email` varchar(50) COLLATE utf8_bin NOT NULL,
+  `UTI_Grade` varchar(10) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Index pour les tables exportées
@@ -140,9 +140,9 @@ ALTER TABLE `typejeux`
   ADD PRIMARY KEY (`TJV_id`);
 
 --
--- Index pour la table `utilisaeur`
+-- Index pour la table `utilisateur`
 --
-ALTER TABLE `utilisaeur`
+ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`UTI_id`);
 
 --
@@ -165,6 +165,11 @@ ALTER TABLE `jeuxvideo`
 ALTER TABLE `jv_tjv`
   MODIFY `JV_TJV_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `UTI_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- Contraintes pour les tables exportées
 --
 
@@ -172,7 +177,7 @@ ALTER TABLE `jv_tjv`
 -- Contraintes pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  ADD CONSTRAINT `commentaire_ibfk_1` FOREIGN KEY (`COM_Utilisateur_id`) REFERENCES `utilisaeur` (`UTI_id`),
+  ADD CONSTRAINT `commentaire_ibfk_1` FOREIGN KEY (`COM_Utilisateur_id`) REFERENCES `utilisateur` (`UTI_id`),
   ADD CONSTRAINT `commentaire_ibfk_2` FOREIGN KEY (`COM_JeuxVideo_id`) REFERENCES `jeuxvideo` (`JV_id`);
 
 --
