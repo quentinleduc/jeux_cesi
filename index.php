@@ -43,13 +43,9 @@
 <div class="container-fluid bg-3 text-center">    
 	<h3>Jeux-Vidéo ajoutés récement</h3><br>
 	<?php
-			if(IS_NULL($_GET["message"])){
+			if(isset($_GET["message"])){
 
-				 echo " ";
-			}
-
-			else {
-				 echo $_GET["message"]; 
+				  echo $_GET["message"]; 
 			}
 	?>
 	<div class="row">
