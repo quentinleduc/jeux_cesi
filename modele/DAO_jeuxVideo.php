@@ -130,6 +130,7 @@ public function update_jeux($id,$nom,$cat,$typeJeux)
   try{
     $sth = $this->connexion->prepare("update jeuxvideo set JV_Nom ='".$nom."' , JV_Categorie_id =".$cat." , JV_Type_jeux_id = ".$typeJeux."  JV_Date_update = now() where JV_id= ".$id.";");
     $sth->execute();
+    
   }
   catch (TableAccesException $e) {
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
@@ -138,7 +139,7 @@ public function update_jeux($id,$nom,$cat,$typeJeux)
     $exception=new ConnexionException("problème de connection à la base");
     throw $exception;
   }
-  
+
 
 }
 
