@@ -20,7 +20,6 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>                        
 			</button>
-			<a class="navbar-brand" href="#">Notre Site</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
@@ -43,6 +42,16 @@
   
 <div class="container-fluid bg-3 text-center">    
 	<h3>Jeux-Vidéo ajoutés récement</h3><br>
+	<?php
+			if(IS_NULL($_GET["message"])){
+
+				 echo " ";
+			}
+
+			else {
+				 echo $_GET["message"]; 
+			}
+	?>
 	<div class="row">
 		<div class="col-sm-3">
 			<p>Some text..</p>

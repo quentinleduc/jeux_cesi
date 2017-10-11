@@ -33,34 +33,14 @@
 	</div>
 </nav>
 
-<dic id="Formulaire_login">
-	<form action="login1.php" method="post">
+<dic id="Formulaire_mdp">
+	<form action="login_mdp.php" method="post">
 	  <br>
-	  <p> Login </p>
-	  <input type="text" placeholder="login" name="login"> <br>
-	  <br>
-	  <p> Mot de passe </p>
-	  <input type="password" placeholder="mdp" name="mdp"> <br>
-	  <br>
+	  <p> Un nouveau mot de passe vous sera renvoyer sur votre adresse Email</p>
+	  <p> Adresse Email  :  <input type="text" placeholder="Email" name="email"> </p><br> 
 	  <input type="submit" value="OK">
-	  <a href="mdp_oublier.php">Mot de passe oublier</a>
 	</form>
 </dic>
-<div id = "erreurmsg">
-	<?php
-		session_start();
-		error_reporting(E_ALL & ~E_NOTICE);
-
-		if ($_GET["error"] == "error"){
-		  echo "Votre login et/ou votre mdp sont incorrects";
-		}
-
-		if ($_GET["log"] == "log"){
-		  echo "Merci de vous identifier";
-		}
-
-		  ?>
-</div>
 <footer class="container-fluid text-center">
 </footer>
 
