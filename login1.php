@@ -2,7 +2,10 @@
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
-if($_POST["login"] == "admin" && $_POST["mdp"] == "azerty"){
+$DAO = New DAO();
+$Identifiant = $DAO->get_user($_POST["login"],$_POST["mdp"]);
+
+if($_POST["login"] == $Identifiant.get_login && $_POST["mdp"] == $Identifiant.get_mdp()){
   $_SESSION["login"] = $_POST["login"];
   $_SESSION["mdp"] = $_POST["mdp"];
 

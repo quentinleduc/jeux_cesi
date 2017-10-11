@@ -27,11 +27,11 @@ public function deconnexion(){
 }
 
 // fonction qui retourne un utilisateur
-public function get_user($id){
+public function get_user($user,$mdp){
   $result = array();
   $result_user = array();
   try{
-    $sth = $this->connexion->prepare("SELECT  * FROM `Utilisateur` WHERE `UTI_id` = \"".$id."\"");
+    $sth = $this->connexion->prepare("SELECT  * FROM `Utilisateur` WHERE `UTI_Login` = \"".$user."\" AND UTI_Password = \"".$mdp."\"");
     $sth->execute();
     $result = $sth->fetch();
   }
@@ -40,7 +40,7 @@ public function get_user($id){
   }
 
   array_push($result_user, new User($result["UTI_id"],$result["UTI_Nom"],$result["UTI_Prenom"],$result["UTI_Login"],
-  	$result["UTI_Password"],$result["UTI_Email"],$result["UTI_Grade"]));
+    $result["UTI_Password"],$result["UTI_Email"],$result["UTI_Grade"]));
    
     return $result_user;
 }
