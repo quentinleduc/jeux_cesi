@@ -3,7 +3,7 @@ require_once __DIR__."/user.php";
 require_once __DIR__."/../include/Exceptions/TableAccessException.php";
 require_once __DIR__."/../include/Exceptions/ConnexionException.php";
 
-class DAO{
+class DAO_user{
   private $connexion;
 
 
