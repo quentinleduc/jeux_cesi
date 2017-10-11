@@ -3,7 +3,7 @@ require_once __DIR__."/jeuxvideo.php";
 require_once __DIR__."/../include/Exceptions/TableAccessException.php";
 require_once __DIR__."/../include/Exceptions/ConnexionException.php";
 
-class DAO{
+class DAO_jeuxVideo{
   private $connexion;
 
 
@@ -130,7 +130,7 @@ public function update_jeux($id,$nom,$cat,$typeJeux)
   try{
     $sth = $this->connexion->prepare("update jeuxvideo set JV_Nom ='".$nom."' , JV_Categorie_id =".$cat." , JV_Type_jeux_id = ".$typeJeux."  JV_Date_update = now() where JV_id= ".$id.";");
     $sth->execute();
-    
+
   }
   catch (TableAccesException $e) {
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
