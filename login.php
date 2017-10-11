@@ -23,11 +23,11 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.php">Accueil</a></li>
+				<li><a href="index.php">Accueil</a></li>
 				<li><a href="liste_jeux.php">Tout les Jeux</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 		</div>
 	</div>
@@ -37,13 +37,16 @@
 	<form action="login1.php" method="post">
 	  <br>
 	  <p> Login </p>
-	  <input type="text" placeholder="login" name="login"> <br>
+	  <input type="text" placeholder="login" name="login" class="form_login form-control"> <br>
 	  <br>
 	  <p> Mot de passe </p>
-	  <input type="password" placeholder="mdp" name="mdp"> <br>
+	  <input type="password" placeholder="mdp" name="mdp" class="form_login form-control"> <br>
 	  <br>
-	  <input type="submit" value="OK">
+	  <input type="submit" value="OK" class="btn btn-default">
+	  <br>
 	  <a href="mdp_oublier.php">Mot de passe oublier</a>
+	  <br>
+	  <a href="inscription.html">Créer votre compte</a>
 	</form>
 </dic>
 <div id = "erreurmsg">

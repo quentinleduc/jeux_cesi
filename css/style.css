@@ -20,3 +20,14 @@ footer {
 	text-align: center;
 	color : red;
 }
+
+.form_login{
+	width: 300px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form_inscription{
+	width: 300px;
+}
