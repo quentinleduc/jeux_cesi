@@ -138,6 +138,7 @@ public function update_jeux($id,$nom,$cat,$typeJeux)
     $exception=new ConnexionException("problème de connection à la base");
     throw $exception;
   }
+  
 
 }
 
