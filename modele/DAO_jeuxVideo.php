@@ -37,7 +37,7 @@ public function get_jeu($id){
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
   }
 
-  $jeu= new JeuxVideo($result["JV_id"],$result["JV_Nom"],$result["JV_Categorie_id"],$result["JV_Type_jeux_id"],	$result["JV_Date_insert"],$result["JV_Date_update"],$result["JV_Image"]));
+  $jeu= new JeuxVideo($result["JV_id"],$result["JV_Nom"],$result["JV_Categorie_id"],$result["JV_Type_jeux_id"],	$result["JV_Date_insert"],$result["JV_Date_update"],$result["JV_Image"]);
    
     return $jeu;
 }
@@ -79,14 +79,14 @@ public function get_N_premiers_jeux($n){
 
   // si le chiffre rentré est inférieur au nombre de résultats
   if($n < count($result)){
-    for($i=0; $i<$n; $i++){//alors on récuppere le nombre de résultat demandé
-      array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
-    }
+    foreach ($result as $elem) {
+    array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
+  }
   }
   else{// sinon on charge les données présentes 
-    for($i=0; $i<count($result); $i++){
-      array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
-    }
+    foreach ($result as $elem) {
+    array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
+  }
   }
   
    
