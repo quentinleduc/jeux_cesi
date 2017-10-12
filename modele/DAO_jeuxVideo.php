@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__."/jeuxvideo.php";
-require_once __DIR__."/../include/Exceptions/TableAccessException.php";
-require_once __DIR__."/../include/Exceptions/ConnexionException.php";
 
 class DAO_jeuxVideo{
   private $connexion;
