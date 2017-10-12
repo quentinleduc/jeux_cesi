@@ -25,6 +25,18 @@
 			<ul class="nav navbar-nav">
 				<li><a href="home.php">Accueil</a></li>
 				<li class="active"><a href="liste_jeux_home.php">Tout les Jeux</a></li>
+				<?php 
+					session_start();
+					require_once __DIR__."/modele/DAO_user.php";
+						 
+					$dao= new DAO_user;
+					$list = $dao->get_user($_SESSION["login"],$_SESSION["mdp"]);
+
+					if($list[0]->get_grade() == "admin")
+					{
+						?><li><a href="nouveau_jeu.php"> Nouveau Jeu </a></li><?php
+					}
+					?>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="moncompte.php"><span class="glyphicon glyphicon-log-in"></span>Mon compte</a></li>
