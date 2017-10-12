@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
   
 </head>
 <body>
@@ -32,49 +32,37 @@
 		</div>
 	</div>
 </nav>
-  
+ 
 <div class="container-fluid bg-3 text-center">    
 	<h3>Jeux-Vidéo ajoutés récement</h3><br>
 	<div class="row">
-		<div class="col-sm-3">
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3"> 
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3"> 
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
+		<?php
+		include('../include/session.inc.php');
+		include('../include/header.tpl.php');
+		$con = mysqli_connect("localhost","root","root","projet_web_jv");
+
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+
+		// Perform queries 
+		$result = mysqli_query($con,"SELECT * FROM jeuxvideo");
+		while($row = mysqli_fetch_assoc($result)) {
+			$id=$row["film_id"];
+			$nom=$row["JV_Nom"]; 
+			$img=$row["JV_Image"];
+			?>
+			<div class="col-sm-3">
+			<p><?php echo $nom;?></p>
+			<img src="img/<?php echo $img;?>" id="img-list" alt="Image">
+			</div>
+		<?php
+		}
+		?>
 	</div>
 </div><br>
-
-<div class="container-fluid bg-3 text-center">    
-	<div class="row">
-		<div class="col-sm-3">
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3"> 
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3"> 
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
-			<p>Some text..</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-	</div>
-</div><br><br>
 
 <footer class="container-fluid text-center">
 	<p>Footer Text</p>
