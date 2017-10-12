@@ -37,9 +37,9 @@ public function get_jeu($id){
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
   }
 
-  array_push($result_jeux, new JeuxVideo($result["JV_id"],$result["JV_Nom"],$result["JV_Categorie_id"],$result["JV_Type_jeux_id"],	$result["JV_Date_insert"],$result["JV_Date_update"]));
+  $jeu= new JeuxVideo($result["JV_id"],$result["JV_Nom"],$result["JV_Categorie_id"],$result["JV_Type_jeux_id"],	$result["JV_Date_insert"],$result["JV_Date_update"],$result["JV_Image"]);
    
-    return $result_jeux;
+    return $jeu;
 }
 
 //fonction qui retourne tous les jeux
@@ -57,7 +57,7 @@ public function get_all_jeux(){
   }
 
   foreach ($result as $elem) {
-    array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"]));
+    array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
   }
     return $result_jeux;
 }
@@ -79,14 +79,14 @@ public function get_N_premiers_jeux($n){
 
   // si le chiffre rentré est inférieur au nombre de résultats
   if($n < count($result)){
-    for($i=0; $i<$n; $i++){//alors on récuppere le nombre de résultat demandé
-      array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"]));
-    }
+    foreach ($result as $elem) {
+    array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
+  }
   }
   else{// sinon on charge les données présentes 
-    for($i=0; $i<count($result); $i++){
-      array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"]));
-    }
+    foreach ($result as $elem) {
+    array_push($result_jeux, new JeuxVideo($elem["JV_id"],$elem["JV_Nom"],$elem["JV_Categorie_id"],$elem["JV_Type_jeux_id"],  $elem["JV_Date_insert"],$elem["JV_Date_update"],$elem["JV_Image"]));
+  }
   }
   
    
@@ -94,6 +94,7 @@ public function get_N_premiers_jeux($n){
 }
 
 // fonction qui crée un jeux video
+<<<<<<< HEAD
 public function create_jeux($nom, $categorie,$image){
   try{
     $sth = $this->connexion->prepare("SELECT MAX(JV_id) FROM jeuxvideo");
@@ -115,6 +116,11 @@ public function create_jeux($nom, $categorie,$image){
   }
   try{
    $sth = $this->connexion->prepare("INSERT INTO `jeuxvideo`(`JV_id`,`JV_Nom`, `JV_Categorie_id`, `JV_Date_insert`, `JV_Image`) VALUES (\"".$result["JV_id"]."\",\"".$nom."\",\"".$result_CAT."\" now(), \"".$image."\")");
+=======
+public function create_jeux($nom, $categorie, $typeJeux,$img){
+  try{
+    $sth = $this->connexion->prepare("INSERT INTO `jeuxvideo`(`JV_Nom`, `JV_Categorie_id`, `JV_Type_jeux_id`, `JV_Date_insert`, `JV_Date_update`, `JV_Image`) VALUES (\"".$nom."\",\"".$categorie."\",\"".$typeJeux."\", now() , now(), \"".$img."\" )");
+>>>>>>> 949ac5c38adaa5c70231e5636cd29f885b941dcd
     $sth->execute();
   }
  catch (TableAccesException $e) {
