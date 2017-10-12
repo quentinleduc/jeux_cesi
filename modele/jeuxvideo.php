@@ -7,16 +7,17 @@ class JeuxVideo {
 	private $typejeux_id;
 	private $dateinsertion;
 	private $datemaj;
+	private $img;
 
 
-
-	function __construct($i, $n, $p, $l, $m, $e){
+	function __construct($i, $n, $p, $l, $m, $e,$i){
 		$this->id = $i;
 		$this->nom = $n;
 		$this->categorie_id = $p;
 		$this->typejeux_id = $l;
 		$this->dateinsertion = $m;
 		$this->datemaj = $e;
+		$this->img = $i;
 	}
 
 	public function get_nom(){
@@ -65,6 +66,14 @@ class JeuxVideo {
 
 	public function set_id($n){
 		$this->id = $n;
+	}
+
+	public function get_img(){
+		return $this->img;
+	}
+
+	public function set_img($n){
+		$this->img = $n;
 	}
 
 }
