@@ -35,4 +35,28 @@ footer {
 #img-list{
 	width: 300px;
 	height: 150px;
+	margin-bottom: 1px
+}
+
+#case-jeux{
+	width: 304px;
+	margin: 20px 15px 0px 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: grey;
+	padding: 0px;
+}
+
+#nom-jeux{
+	font-size: 18px;
+}
+
+#img-vue{
+	width: 400px;
+	height: 250px;
+	margin: 20px;
+}
+
+#info-jeu{
+	margin-top: 30px;
 }

@@ -24,7 +24,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="index.php">Accueil</a></li>
-				<li class="active"><a href="liste_jeux.php">Tout les Jeux</a></li>
+				<li ><a href="liste_jeux.php">Tout les Jeux</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -32,40 +32,46 @@
 		</div>
 	</div>
 </nav>
- 
-<div class="container-fluid bg-3 text-center">    
-	<h3>Jeux-Vidéo ajoutés récement</h3><br>
-	<div class="row">
-		<?php
-		include('../include/session.inc.php');
-		include('../include/header.tpl.php');
-		$con = mysqli_connect("localhost","root","root","projet_web_jv");
 
-		// Check connection
-		if (mysqli_connect_errno())
-		  {
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		  }
+<?php
+//require_once __DIR__."/modele/DAO_jeuxVideo.php";
 
-		// Perform queries 
-		$result = mysqli_query($con,"SELECT * FROM jeuxvideo");
-		while($row = mysqli_fetch_assoc($result)) {
-			$id=$row["JV_id"];
-			$nom=$row["JV_Nom"]; 
-			$img=$row["JV_Image"];
-			?>
-			<div class="col-sm-3" id="case-jeux" onclick="location.href='vue_jeux.php?id=<?=$id?>';" onmouseover="" style="cursor: pointer;">
-			<p id="nom-jeux"><?php echo $nom;?></p>
-			<img src="img/<?php echo $img;?>" id="img-list" alt="Image">
-			</div>
-		<?php
-		}
-		?>
+//$dao= new DAO_jeuxVideo();
+//$id = $_GET["id"];
+//echo $id;
+
+//$jeu = $dao->get_jeu($id);
+//echo = $jeu;
+//$nom_jeux  = $jeu->get_nom();
+//$text_film = $donnees["film_text"];
+//$date_film = $donnees["film_date"];
+
+//echo $nom_jeux;
+
+
+?>
+
+<div class="row">
+	<div class="col-sm-4">
+		<img src="img/fifa18.jpg" id="img-vue">
 	</div>
-</div><br>
+	<div class="col-sm-8" id="info-jeu">
+		<label class="control-label col-sm-2">Nom</label>
+		<label class="control-label col-sm-2">Fifa 18</label>
+		<br>
+		<br>
+		<label class="control-label col-sm-2">Tye de jeu</label>
+		<label class="control-label col-sm-2">Simulation</label>
+		<br>
+		<br>
+		<label class="control-label col-sm-2">Console</label>
+		<label class="control-label col-sm-2">PS4 / Xbox / PC</label>
+	</div>
+</div>
+
 
 <footer class="container-fluid text-center">
-	<p>Footer Text</p>
+	
 </footer>
 
 </body>
