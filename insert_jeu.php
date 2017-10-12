@@ -1,8 +1,8 @@
 <?php
-	require_once __DIR__."/modele/DAO_user.php";
+	require_once __DIR__."/modele/DAO_jeuVideo.php";
 		
 
-	if (empty($_POST["prenom"]) OR empty($_POST["nom"]) OR empty($_POST["login"]) OR empty($_POST["email"]) OR empty($_POST["pwd"]) OR empty($_POST["pwd2"]) ) {
+	if (empty($_POST["nom"]) OR empty($_POST["genre"]) OR empty($_POST["support1"]) OR empty($_POST["fichier"])) {
 		$error = "Tout les champs sont obligatoire";
 		header("location:login.php?error=$error");
 	}
