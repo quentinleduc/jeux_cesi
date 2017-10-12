@@ -23,8 +23,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home.php">Accueil</a></li>
-				<li><a href="liste_jeux_home.php">Tout les Jeux</a></li>
+				<li class="active"><a href="index.php">Accueil</a></li>
+				<li><a href="liste_jeux.php">Tout les Jeux</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="moncompte.php"><span class="glyphicon glyphicon-log-in"></span>Mon compte</a></li>
@@ -97,6 +97,7 @@
 </div><br><br>
 
 <footer class="container-fluid text-center">
+	<p>Footer Text</p>
 </footer>
 
 </body>

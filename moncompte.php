@@ -23,49 +23,45 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="index.php">Accueil</a></li>
-				<li class="active"><a href="liste_jeux.php">Tout les Jeux</a></li>
+				<li><a href="home.php">Accueil</a></li>
+				<li><a href="liste_jeux_home.php">Tout les Jeux</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="moncompte.php"><span class="glyphicon glyphicon-log-in"></span>Mon compte</a></li>
+				<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
- 
-<div class="container-fluid bg-3 text-center">    
-	<h3>Jeux-Vidéo ajoutés récement</h3><br>
-	<div class="row">
-		<?php
-		include('../include/session.inc.php');
-		include('../include/header.tpl.php');
-		$con = mysqli_connect("localhost","root","root","projet_web_jv");
-
-		// Check connection
-		if (mysqli_connect_errno())
-		  {
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		  }
-
-		// Perform queries 
-		$result = mysqli_query($con,"SELECT * FROM jeuxvideo");
-		while($row = mysqli_fetch_assoc($result)) {
-			$id=$row["film_id"];
-			$nom=$row["JV_Nom"]; 
-			$img=$row["JV_Image"];
-			?>
-			<div class="col-sm-3">
-			<p><?php echo $nom;?></p>
-			<img src="img/<?php echo $img;?>" id="img-list" alt="Image">
+<form class="form-horizontal"  action="insert_user.php" method="post">
+	<div class="form-group">
+			<label class="control-label col-sm-2">Nom</label>
+			<div class="col-sm-10">
+				<input  class="form_inscription form-control" id="nom" name="nom">
 			</div>
-		<?php
-		}
-		?>
-	</div>
-</div><br>
-
+			<br>
+			<br>
+			<label class="control-label col-sm-2">Prénon</label>
+			<div class="col-sm-10">
+				<input  class="form_inscription form-control" id="prenom"  name="prenom">
+			</div>
+			<br>
+			<br>
+			<label class="control-label col-sm-2">Login</label>
+			<div class="col-sm-10">
+				<input  class="form_inscription form-control" id="login"  name="login">
+			</div>
+			<br>
+			<br>
+			<label class="control-label col-sm-2">Adresse mail</label>
+			<div class="col-sm-10">
+				<input  class="form_inscription form-control" id="email"  name="email">
+			</div>
+			<div class="col-sm-offset-2 col-sm-10">
+			</div>
+		</div>
+	</form>
 <footer class="container-fluid text-center">
-	<p>Footer Text</p>
 </footer>
 
 </body>

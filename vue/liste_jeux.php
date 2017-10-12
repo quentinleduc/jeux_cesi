@@ -23,38 +23,18 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home.php">Accueil</a></li>
-				<li><a href="liste_jeux_home.php">Tout les Jeux</a></li>
+				<li><a href="index.php">Accueil</a></li>
+				<li class="active"><a href="liste_jeux.php">Tout les Jeux</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="moncompte.php"><span class="glyphicon glyphicon-log-in"></span>Mon compte</a></li>
-				<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
+				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
-
-<div class="jumbotron">
-	<div class="container text-center">
-		<h1>Bienvenue sur le Site Référence du Jeux-Vidéo</h1>      
-		<p></p>
-	</div>
-</div>
   
 <div class="container-fluid bg-3 text-center">    
 	<h3>Jeux-Vidéo ajoutés récement</h3><br>
-	<?php
-				session_start();
-
-				if($_SESSION["login"]){
-
-				  echo "Bienvenue ".$_SESSION["login"];
-				}
-
-				else {
-				  header("location:index.php?log=log");
-				}
-	?>
 	<div class="row">
 		<div class="col-sm-3">
 			<p>Some text..</p>
@@ -97,6 +77,7 @@
 </div><br><br>
 
 <footer class="container-fluid text-center">
+	<p>Footer Text</p>
 </footer>
 
 </body>
