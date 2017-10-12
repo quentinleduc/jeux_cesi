@@ -29,7 +29,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -88,7 +87,6 @@
 </div><br><br>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
 </footer>
 
 </body>
