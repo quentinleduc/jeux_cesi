@@ -94,9 +94,27 @@ public function get_N_premiers_jeux($n){
 }
 
 // fonction qui crée un jeux video
-public function create_jeux($nom, $categorie, $typeJeux){
+public function create_jeux($nom, $categorie,$image){
   try{
-    $sth = $this->connexion->prepare("INSERT INTO `jeuxvideo`(`JV_Nom`, `JV_Categorie_id`, `JV_Type_jeux_id`, `JV_Date_insert`, `JV_Date_update`) VALUES (\"".$nom."\",\"".$categorie."\",\"".$typeJeux."\", now() , now() )");
+    $sth = $this->connexion->prepare("SELECT MAX(JV_id) FROM jeuxvideo");
+    $sth->execute();
+    $result = $sth->fetchAll();
+    $result["JV_id"] = $result["JV_id"] + 1;
+    echo $result["JV_id"];
+  }
+ catch (TableAccesException $e) {
+    echo 'Exception reçue : ',  $e->getMessage(), "\n";
+  }
+  try{
+    $sth = $this->connexion->prepare("SELECT CAT_id FROM categorie WHERE CAT_Nom = \"".$categorie."\"");
+    $sth->execute();
+    $result_CAT = $sth->fetchAll();
+  }
+ catch (TableAccesException $e) {
+    echo 'Exception reçue : ',  $e->getMessage(), "\n";
+  }
+  try{
+   $sth = $this->connexion->prepare("INSERT INTO `jeuxvideo`(`JV_id`,`JV_Nom`, `JV_Categorie_id`, `JV_Date_insert`, `JV_Image`) VALUES (\"".$result["JV_id"]."\",\"".$nom."\",\"".$result_CAT."\" now(), \"".$image."\")");
     $sth->execute();
   }
  catch (TableAccesException $e) {
@@ -139,11 +157,7 @@ public function update_jeux($id,$nom,$cat,$typeJeux)
   }
 
 
-}
-
-
-
-
+  }
 }
 
 

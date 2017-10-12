@@ -58,42 +58,27 @@
 			<br>
 			<label class="control-label col-sm-2">Support</label>
 			<div class="col-sm-10">
-				<SELECT name="support1" size="1">
-					<OPTION>
-					<OPTION>PS3
-					<OPTION>PS4
-					<OPTION>XBOX 360
-					<OPTION>XBOX ONE
-					<OPTION>WII U
-					<OPTION>SWITCH
-					<OPTION>PC
-				</SELECT>
-				<SELECT name="support2" size="1">
-					<OPTION>
-					<OPTION>PS3
-					<OPTION>PS4
-					<OPTION>XBOX 360
-					<OPTION>XBOX ONE
-					<OPTION>WII U
-					<OPTION>SWITCH
-					<OPTION>PC
-				</SELECT>
-				<SELECT name="support3" size="1">
-					<OPTION>
-					<OPTION>PS3
-					<OPTION>PS4
-					<OPTION>XBOX 360
-					<OPTION>XBOX ONE
-					<OPTION>WII U
-					<OPTION>SWITCH
-					<OPTION>PC
-				</SELECT>
+				<input id="PS3" type="checkbox">
+				<label for="PS3"> PS3 </label>
+				<input id="PS4" type="checkbox">
+				<label for="PS4"> PS4 </label>
+				<input id="XBOX 360" type="checkbox">
+				<label for="XBOX 360"> XBOX 360 </label>
+				<br>
+				<input id="XBOX ONE" type="checkbox">
+				<label for="XBOX ONE"> XBOX ONE </label>
+				<input id="WII U" type="checkbox">
+				<label for="WII U"> WII U </label>
+				<input id="SWITCH" type="checkbox">
+				<label for="SWITCH"> SWITCH </label>
+				<input id="PC" type="checkbox">
+				<label for="PC"> PC </label>
 			</div>
 			<br>
 			<br>
 			<label class="control-label col-sm-2">Image du jeu</label>
 			<div class="col-sm-10">
-				<input type="file" id="fichier" name="fichier">
+				<input type="text" id="image" name="image">
 			</div>	 
 			<br>
 			<br>
@@ -107,4 +92,4 @@
 </footer>
 
 </body>
-</html>
+</html><input id="checkBox" type="checkbox">
