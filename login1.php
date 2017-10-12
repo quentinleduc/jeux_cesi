@@ -8,14 +8,14 @@ require_once __DIR__."/modele/DAO_user.php";
 echo $_POST["login"];
 echo $_POST["mdp"];
 
-echo $list->get_login();
-echo $list->get_mdp();
+echo $list[0]->get_login();
+echo $list[0]->get_mdp();
 
-if($_POST["login"] == $list.get_login()&& $_POST["mdp"] == $list.get_mdp()){
+if($_POST["login"] == $list[0]->get_login() && $_POST["mdp"] == $list[0]->get_mdp() ) {
   $_SESSION["login"] = $_POST["login"];
   $_SESSION["mdp"] = $_POST["mdp"];
 
- // header("location:home.php");
+  header("location:home.php");
 }
 
 else {

@@ -31,7 +31,8 @@ public function get_user($user,$mdp){
   $result = array();
   $result_user = array();
   try{
-    $sth = $this->connexion->prepare("SELECT  * FROM `Utilisateur` WHERE `UTI_Login` = \"".$user."\" AND UTI_Password = \"".$mdp."\"");
+    $sth = $this->connexion->prepare("SELECT  * FROM `Utilisateur` WHERE `UTI_Login` = \"".$user."\" AND `UTI_Password` = \"".$mdp."\"");
+    echo  "SELECT  * FROM `Utilisateur` WHERE `UTI_Login` = \"".$user."\" AND `UTI_Password` = \"".$mdp."\"";
     $sth->execute();
     $result = $sth->fetch();
   }
