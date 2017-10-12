@@ -33,29 +33,37 @@
 		</div>
 	</div>
 </nav>
+<?php
+	session_start();
+	require_once __DIR__."/modele/DAO_user.php";
+		 
+	$dao= new DAO_user;
+	$list = $dao->get_user($_SESSION["login"],$_SESSION["mdp"]);
+
+?>
 <form class="form-horizontal"  action="insert_user.php" method="post">
 	<div class="form-group">
 			<label class="control-label col-sm-2">Nom</label>
 			<div class="col-sm-10">
-				<input  class="form_inscription form-control" id="nom" name="nom">
+				<input  class="form_inscription form-control" id="nom" name="nom" value="<?php echo $list[0]->get_nom(); ?>">
 			</div>
 			<br>
 			<br>
 			<label class="control-label col-sm-2">Prénon</label>
 			<div class="col-sm-10">
-				<input  class="form_inscription form-control" id="prenom"  name="prenom">
+				<input  class="form_inscription form-control" id="prenom"  name="prenom" value="<?php echo $list[0]->get_prenom(); ?>">
 			</div>
 			<br>
 			<br>
 			<label class="control-label col-sm-2">Login</label>
 			<div class="col-sm-10">
-				<input  class="form_inscription form-control" id="login"  name="login">
+				<input  class="form_inscription form-control" id="login"  name="login" value="<?php echo $list[0]->get_login(); ?>">
 			</div>
 			<br>
 			<br>
 			<label class="control-label col-sm-2">Adresse mail</label>
 			<div class="col-sm-10">
-				<input  class="form_inscription form-control" id="email"  name="email">
+				<input  class="form_inscription form-control" id="email"  name="email" value="<?php echo $list[0]->get_email(); ?>">
 			</div>
 			<div class="col-sm-offset-2 col-sm-10">
 			</div>

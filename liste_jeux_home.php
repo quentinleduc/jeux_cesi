@@ -27,7 +27,7 @@
 				<li class="active"><a href="liste_jeux_home.php">Tout les Jeux</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="moncompte.php"><span class="glyphicon glyphicon-log-in"></span>Mon compte</a></li>
 				<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
 			</ul>
 		</div>
