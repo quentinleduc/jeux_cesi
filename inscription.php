@@ -44,7 +44,7 @@
 			</div>
 			<br>
 			<br>
-			<label class="control-label col-sm-2">Prénon</label>
+			<label class="control-label col-sm-2">Prénom</label>
 			<div class="col-sm-10">
 				<input  class="form_inscription form-control" id="prenom" placeholder="Entrer votre prénom" name="prenom">
 			</div>

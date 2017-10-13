@@ -39,10 +39,10 @@ public function get_user($user,$mdp){
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
   }
 
-  array_push($result_user, new User($result["UTI_id"],$result["UTI_Nom"],$result["UTI_Prenom"],$result["UTI_Login"],
-    $result["UTI_Password"],$result["UTI_Email"],$result["UTI_Grade"]));
+  $user = new User($result["UTI_id"],$result["UTI_Nom"],$result["UTI_Prenom"],$result["UTI_Login"],
+    $result["UTI_Password"],$result["UTI_Email"],$result["UTI_Grade"]);
    
-    return $result_user;
+    return $user;
 }
 
 //fonction qui retourne tous les utilisateurs
@@ -101,6 +101,7 @@ public function get_N_premiers_users($n){
 
 // fonction qui crée un utilisateur
 public function create_user($nom, $prenom, $login, $mdp , $email, $grade){
+  echo "le nom ".$nom;
   try{
     $sth = $this->connexion->prepare("INSERT INTO `Utilisateur`(`UTI_nom`, `UTI_Prenom`, `UTI_Login`, `UTI_Password`, `UTI_Email`, `UTI_Grade`) VALUES (\"".$nom."\",\"".$prenom."\",\"".$login."\",\"".$mdp."\",\"".$email."\",
 		\"".$grade."\")");
@@ -109,6 +110,8 @@ public function create_user($nom, $prenom, $login, $mdp , $email, $grade){
  catch (TableAccesException $e) {
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
   }
+
+  echo 'coucou ';
 }
 
 //fonction qui supprime un utilisateur
