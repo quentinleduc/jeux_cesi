@@ -58,7 +58,7 @@ class Routeur{
 			//afficher la page qui afficher les details du compte
 			elseif(isset($_GET["monCompte"])  && isset($_SESSION["login"]) ){
 				
-				$this->controleur->afficherMonCompte($this->estConnecte,$_SESSION["prenom"],$_SESSION["login"],$_SESSION["email"],$_SESSION["grade"]);
+				$this->controleur->afficherMonCompte($this->estConnecte,$_SESSION["prenom"],$_SESSION["login"],$_SESSION["email"], $_SESSION["grade"]);
 			}
 
 			//afficher la page qui afficher les details du compte

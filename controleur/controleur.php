@@ -53,7 +53,7 @@ require_once __DIR__."/../vue/vues.php";
 
 	public function afficherMonCompte($user,$prenom,$login,$email,$grade){
 		$this->vue->entete($user,$grade);
-		$this->vue->afficherMonCompte($user,$prenom,$login,$email);
+		$this->vue->afficherMonCompte($user,$prenom,$login,$email,$grade);
 
 	}
 
