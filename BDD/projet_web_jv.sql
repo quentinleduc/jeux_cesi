@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Jeu 12 Octobre 2017 à 10:11
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+-- Client :  127.0.0.1
+-- Généré le :  Ven 13 Octobre 2017 à 07:24
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -68,7 +68,6 @@ CREATE TABLE `jeuxvideo` (
   `JV_id` int(11) NOT NULL,
   `JV_Nom` varchar(60) NOT NULL,
   `JV_Categorie_id` int(11) NOT NULL,
-  `JV_Type_jeux_id` int(11) NOT NULL,
   `JV_Date_insert` date NOT NULL,
   `JV_Date_update` date DEFAULT NULL,
   `JV_Image` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL
@@ -78,17 +77,17 @@ CREATE TABLE `jeuxvideo` (
 -- Contenu de la table `jeuxvideo`
 --
 
-INSERT INTO `jeuxvideo` (`JV_id`, `JV_Nom`, `JV_Categorie_id`, `JV_Type_jeux_id`, `JV_Date_insert`, `JV_Date_update`, `JV_Image`) VALUES
-(1, 'Halo', 1, 7, '2017-10-11', '0000-00-00', 'halo5.jpg'),
-(2, 'Civilization', 8, 7, '2017-10-10', '0000-00-00', 'civilization.jpg'),
-(3, 'GTA 5', 5, 2, '2017-10-10', NULL, 'gta5.jpg'),
-(4, 'Mario Kart', 6, 6, '2017-10-11', NULL, 'mariokart8.jpg'),
-(5, 'FIFA18', 5, 2, '2017-10-11', NULL, 'fifa18.jpg'),
-(6, 'Hitman', 1, 3, '2017-10-12', NULL, 'hitman.jpg'),
-(7, 'PUBG', 1, 7, '2017-10-10', NULL, 'pubg.jpg'),
-(8, 'For Honor', 1, 3, '2017-10-11', NULL, 'forhonor.jpg'),
-(9, 'Bioshock', 7, 7, '2017-10-09', NULL, 'bioshock.jpg'),
-(10, 'Skyrim', 2, 7, '2017-10-08', NULL, 'skyrim.jpg');
+INSERT INTO `jeuxvideo` (`JV_id`, `JV_Nom`, `JV_Categorie_id`, `JV_Date_insert`, `JV_Date_update`, `JV_Image`) VALUES
+(1, 'Halo', 1, '2017-10-11', '0000-00-00', 'halo5.jpg'),
+(2, 'Civilization', 8, '2017-10-10', '0000-00-00', 'civilization.jpg'),
+(3, 'GTA 5', 5, '2017-10-10', NULL, 'gta5.jpg'),
+(4, 'Mario Kart', 6, '2017-10-11', NULL, 'mariokart8.jpg'),
+(5, 'FIFA18', 5, '2017-10-11', NULL, 'fifa18.jpg'),
+(6, 'Hitman', 1, '2017-10-12', NULL, 'hitman.jpg'),
+(7, 'PUBG', 1, '2017-10-10', NULL, 'pubg.jpg'),
+(8, 'For Honor', 1, '2017-10-11', NULL, 'forhonor.jpg'),
+(9, 'Bioshock', 7, '2017-10-09', NULL, 'bioshock.jpg'),
+(10, 'Skyrim', 2, '2017-10-08', NULL, 'skyrim.jpg');
 
 -- --------------------------------------------------------
 
@@ -164,7 +163,9 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`UTI_id`, `UTI_Nom`, `UTI_Prenom`, `UTI_Login`, `UTI_Password`, `UTI_Email`, `UTI_Grade`) VALUES
 (1, 'Bonisseur de La Bath', 'Hubert', 'admin', 'azerty', 'Hubert@oss117.fr', 'admin'),
-(2, 'Austin', 'Powers', 'user', 'azerty', 'Austin@agent.fr', 'user');
+(2, 'Austin', 'Powers', 'user', 'azerty', 'Austin@agent.fr', 'user'),
+(3, 'test', 'test2', 'test2', 'yass', 'zegzg', 'user'),
+(4, 'test', 'test2', 'yass', 'yass', 'yass', 'user');
 
 --
 -- Index pour les tables exportées
@@ -189,8 +190,7 @@ ALTER TABLE `commentaire`
 --
 ALTER TABLE `jeuxvideo`
   ADD PRIMARY KEY (`JV_id`),
-  ADD KEY `JV_Categorie_id` (`JV_Categorie_id`),
-  ADD KEY `JV_Type_jeux_id` (`JV_Type_jeux_id`);
+  ADD KEY `JV_Categorie_id` (`JV_Categorie_id`);
 
 --
 -- Index pour la table `jv_tjv`
@@ -225,17 +225,17 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `jeuxvideo`
 --
 ALTER TABLE `jeuxvideo`
-  MODIFY `JV_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `JV_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `jv_tjv`
 --
 ALTER TABLE `jv_tjv`
-  MODIFY `JV_TJV_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `JV_TJV_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `UTI_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UTI_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --
@@ -251,8 +251,7 @@ ALTER TABLE `commentaire`
 -- Contraintes pour la table `jeuxvideo`
 --
 ALTER TABLE `jeuxvideo`
-  ADD CONSTRAINT `jeuxvideo_ibfk_1` FOREIGN KEY (`JV_Categorie_id`) REFERENCES `categorie` (`CAT_id`),
-  ADD CONSTRAINT `jeuxvideo_ibfk_2` FOREIGN KEY (`JV_Type_jeux_id`) REFERENCES `typejeux` (`TJV_id`);
+  ADD CONSTRAINT `jeuxvideo_ibfk_1` FOREIGN KEY (`JV_Categorie_id`) REFERENCES `categorie` (`CAT_id`);
 
 --
 -- Contraintes pour la table `jv_tjv`
